@@ -1,0 +1,19 @@
+CREATE DATABASE  IF NOT EXISTS `cmd_example` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `cmd_example`;
+
+DROP TABLE IF EXISTS `server`;
+CREATE TABLE `server` (
+  `ID` char(128) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE DATABASE  IF NOT EXISTS `cmd_example_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `cmd_example_test`;
+
+DROP TABLE IF EXISTS `server`;
+CREATE TABLE `server` (
+  `ID` char(128) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
