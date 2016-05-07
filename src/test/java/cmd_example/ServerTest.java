@@ -27,7 +27,7 @@ public class ServerTest
 		try{
 			log.info("test Parser");
 			Parser parser = new XMLParser();
-			List<Server> servers = parser.parse("server_test.xml");
+			List<Server> servers = parser.parse("test_data/server_test.xml");
 
 			Assert.assertEquals(1, servers.size());
 			Assert.assertEquals(servers.get(0).getId(), "testId");
@@ -47,16 +47,16 @@ public class ServerTest
 		try{
 			ShellAPI shellApi = new ShellAPI();
 			
-			int error_code = shellApi.readAndSaveToDatabase("file_not_found.xml");
+			int error_code = shellApi.readAndSaveToDatabase("test_data/file_not_found.xml");
 			Assert.assertEquals(error_code, Constants.ERROR_CODE_FILE_NOT_FOUND);
 			
-			error_code = shellApi.readAndSaveToDatabase("server_test_no_data.xml");
+			error_code = shellApi.readAndSaveToDatabase("test_data/server_test_no_data.xml");
 			Assert.assertEquals(error_code, Constants.ERROR_CODE_SERVER_DATA_NULL);
 			
-			error_code = shellApi.readAndSaveToDatabase("server_test.xml");
+			error_code = shellApi.readAndSaveToDatabase("test_data/server_test.xml");
 			Assert.assertEquals(error_code, Constants.MSG_CODE_SERVER_SAVED);
 			
-			error_code = shellApi.readAndSaveToDatabase("server_test.xml");
+			error_code = shellApi.readAndSaveToDatabase("test_data/server_test.xml");
 			Assert.assertEquals(error_code, Constants.ERROR_CODE_DUPLICATE_SERVER);
 			
 		} catch(Exception e) {
@@ -74,12 +74,12 @@ public class ServerTest
 			ShellAPI shellApi = new ShellAPI();
 			Assert.assertEquals(0, shellApi.getAllServers().size());
 			
-			shellApi.readAndSaveToDatabase("server_test.xml");
+			shellApi.readAndSaveToDatabase("test_data/server_test.xml");
 			Assert.assertEquals(1, shellApi.getAllServers().size());
 			Assert.assertEquals("testId", shellApi.getAllServers().get(0).getId());
 			Assert.assertEquals("testName", shellApi.getAllServers().get(0).getName());
 			
-			shellApi.readAndSaveToDatabase("server_test_1.xml");
+			shellApi.readAndSaveToDatabase("test_data/server_test_1.xml");
 			Assert.assertEquals(2, shellApi.getAllServers().size());
 		
 		} catch(Exception e) {
@@ -96,7 +96,7 @@ public class ServerTest
 		
 		try{
 			ShellAPI shellApi = new ShellAPI();
-			shellApi.readAndSaveToDatabase("server_test.xml");
+			shellApi.readAndSaveToDatabase("test_data/server_test.xml");
 			Assert.assertEquals(1, shellApi.getAllServers().size());
 			Assert.assertEquals("testId", shellApi.getAllServers().get(0).getId());
 			Assert.assertEquals("testName", shellApi.getAllServers().get(0).getName());
